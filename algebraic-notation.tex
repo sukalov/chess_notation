@@ -1,0 +1,445 @@
+\documentclass[5pt,a4paper]{article}
+\usepackage[left=36mm, top=20mm, right=40mm, bottom=20mm, nohead, nofoot]{geometry}
+\usepackage[LSF,T1]{fontenc}
+% Packages
+\usepackage{chessboard,xskak}   % For chess board
+\usepackage{multicol}           % Allows multicols in tables
+\usepackage{tikz,everypage}
+\usetikzlibrary{backgrounds}
+
+\newcommand*{\AbsolutePosition}[3]{%
+    % #1 = x (from south west corner of page
+    % #2 = y
+    % #3 = content
+    \AddThispageHook{%
+        \begin{tikzpicture}[remember picture,overlay]
+            \draw (current page.south west) ++(#1,#2) node {#3};%
+        \end{tikzpicture}
+    }%
+}
+\definecolor{darkgray}{gray}{0.4}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=green,
+    filecolor=magenta,      
+    urlcolor=darkgray,
+}
+
+\usepackage{textpos}
+\usepackage{tabularx}           % Intelligent column widths
+\usepackage{tabulary}           % Used in header and footer
+\usepackage{hhline}             % Border under tables
+\usepackage{graphicx}           % For images
+\usepackage{xcolor}             % For hex colours
+\usepackage[utf8x]{inputenc}    % For unicode character support
+\usepackage[T1]{fontenc}        % Without this we get weird character replacements
+\usepackage{colortbl}           % For coloured tables
+\usepackage{setspace}           % For line height
+\usepackage{lastpage}           % Needed for total page number
+\usepackage{seqsplit}           % Splits long words.
+%\usepackage{opensans}          % Can't make this work so far. Shame. Would be lovely.
+\usepackage[normalem]{ulem}     % For underlining links
+% Most of the following are not required for the majority
+% of cheat sheets but are needed for some symbol support.
+\usepackage{amsmath}            % Symbols
+\usepackage{MnSymbol}           % Symbols
+\usepackage{wasysym}            % Symbols
+%\usepackage[english,german,french,spanish,italian]{babel}              % Languages
+% Document Info
+\author{Dave Child (DaveChild)}
+\pdfinfo{
+  /Title (chess-algebraic-notation.pdf)
+  /Creator (Cheatography)
+  /Author (Dave Child (DaveChild))
+  /Subject (Chess - Algebraic Notation Cheat Sheet)
+}
+
+% Lengths and widths
+\addtolength{\textwidth}{6cm}
+\addtolength{\textheight}{-1cm}
+\addtolength{\hoffset}{-3cm}
+\addtolength{\voffset}{-2cm}
+\setlength{\tabcolsep}{0.2cm} % Space between columns
+\setlength{\headsep}{-12pt} % Reduce space between header and content
+\setlength{\headheight}{85pt} % If less, LaTeX automatically increases it
+\renewcommand{\footrulewidth}{0pt} % Remove footer line
+\renewcommand{\headrulewidth}{0pt} % Remove header line
+\renewcommand{\seqinsert}{\ifmmode\allowbreak\else\-\fi} % Hyphens in seqsplit
+% This two commands together give roughly
+% the right line height in the tables
+\renewcommand{\arraystretch}{1.3}
+\onehalfspacing
+
+% Commands
+\newcommand{\SetRowColor}[1]{\noalign{\gdef\RowColorName{#1}}\rowcolor{\RowColorName}} % Shortcut for row colour
+\newcommand{\mymulticolumn}[3]{\multicolumn{#1}{>{\columncolor{\RowColorName}}#2}{#3}} % For coloured multi-cols
+\newcolumntype{x}[1]{>{\raggedright}p{#1}} % New column types for ragged-right paragraph columns
+\newcommand{\tn}{\tabularnewline} % Required as custom column type in use
+
+% Font and Colours
+\definecolor{HeadBackground}{HTML}{333333}
+\definecolor{FootBackground}{HTML}{666666}
+\definecolor{TextColor}{HTML}{333333}
+\definecolor{DarkBackground}{gray}{0.3}
+\definecolor{LightBackground}{gray}{0.9}
+\renewcommand{\familydefault}{\sfdefault}
+\color{TextColor}
+
+% Header and Footer
+\thispagestyle{empty}
+\pagestyle{fancy}
+
+
+\begin{document}
+\raggedcolumns
+\AbsolutePosition{13.5cm}{3.5cm}{\textblock{vk.com/ziferchess}}
+\centering
+\huge
+\textbf{\textcolor{DarkBackground}{\ ALGEBRAIC \ CHESS\ NOTATION\ }}
+\par\addvspace{2.5em}
+
+% Set font size to small. Switch to any value
+% from this page to resize cheat sheet text:
+% www.emerson.emory.edu/services/latex/latex_169.html
+\footnotesize % Small font.
+
+\begin{multicols*}{3}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Squares}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{Board is always oriented with a white square at the bottom right.} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{Squares are named from white's perspective} \tn 
+% Row Count 3 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{Vertical columns are files, named a-h (always lower case) from left to right} \tn 
+% Row Count 5 (+ 2)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{Horizontal rows are ranks, named 1-8 from near to far} \tn 
+% Row Count 7 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{White king begins on square e1} \tn 
+% Row Count 8 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{4em}
+
+\begin{tabularx}{5.377cm}{x{1.3731 cm} x{1.69349 cm} x{1.51041 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{3}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Pieces}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+{\bf{Piece}} & {\bf{Code}} & {\bf{Symbol}} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+King & K & ♔ \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+Queen & Q & ♕ \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+Rook & R & ♖ \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+Knight & N * & ♘ \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+Bishop & B & ♗ \tn 
+% Row Count 6 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+Pawn & {[}no letter{]} & ♙ \tn 
+% Row Count 7 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}---}
+\SetRowColor{LightBackground}
+\mymulticolumn{3}{x{5.377cm}}{Pieces are always uppercase. \newline * In chess problems, "S" is used to represent the Knight.}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}---}
+\end{tabularx}
+\par\addvspace{4em}
+
+\begin{tabularx}{5.377cm}{p{0.4577 cm} x{1.00694 cm} x{3.11236 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{3}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Moves}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{3}{x{5.377cm}}{The notation for a move indicates which piece is moved, and to where:} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+ & {\bf{Qa3}} & Queen moves to a3 \tn 
+% Row Count 3 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+ & {\bf{Kh6}} & King moves to h6 \tn 
+% Row Count 4 (+ 1)
+% Row 3
+\SetRowColor{white}
+ & {\bf{b4}} & Pawn moves to b4 \tn 
+% Row Count 5 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{3}{x{5.377cm}}{Where two identical pieces could move to the same square, the piece name is followed by its original file (or rank where the file is the same), like so:} \tn 
+% Row Count 9 (+ 4)
+% Row 5
+\SetRowColor{white}
+ & {\bf{Rba3}} & Rook on b file moves to a3 \tn 
+% Row Count 10 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+ & {\bf{N4f2}} & Knight on rank 4 moves to f2 \tn 
+% Row Count 12 (+ 2)
+% Row 7
+\SetRowColor{white}
+ & {\bf{cxd5}} & Pawn on c file takes d5 \tn 
+% Row Count 13 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}---}
+\end{tabularx}
+\par\addvspace{4em}
+
+\begin{tabularx}{5.377cm}{p{0.94563 cm} x{4.03137 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Symbols}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+x & Piece taken \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+e.p. & Piece taken en passant \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
++ & Check \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+\# & Checkmate \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+= & Pawn promotion * \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+0-0 & Castle King-side \tn 
+% Row Count 6 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+0-0-0 & Castle Queen-side \tn 
+% Row Count 7 (+ 1)
+% Row 7
+\SetRowColor{white}
+1-0 & White win \tn 
+% Row Count 8 (+ 1)
+% Row 8
+\SetRowColor{LightBackground}
+$\frac{1}{2}$-$\frac{1}{2}$ & Draw \tn 
+% Row Count 9 (+ 1)
+% Row 9
+\SetRowColor{white}
+0-1 & Black win \tn 
+% Row Count 10 (+ 1)
+% Row 10
+\SetRowColor{LightBackground}
+(=) & Draw offered \tn 
+% Row Count 11 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{* e8=Q means e-file pawn promoted to Queen. The equals is often omitted.}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{4em}
+
+\begin{tabularx}{5.377cm}{p{0.4977 cm} x{4.4793 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Example}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{1. e4 c5} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+ & White pawn to e4; Black pawn to c5 \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{2. Nf3 d6} \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+ & White knight to f3 \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{3. Bb5+ Bd7} \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+ & White bishop to b5, Black in check \tn 
+% Row Count 6 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{4. Bxd7+ Qxd7} \tn 
+% Row Count 7 (+ 1)
+% Row 7
+\SetRowColor{white}
+ & White bishop takes black bishop on d7, black in check; Queens takes d7 bishop \tn 
+% Row Count 10 (+ 3)
+% Row 8
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{5. c4 Nc6} \tn 
+% Row Count 11 (+ 1)
+% Row 9
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{6. Nc3 Nf6} \tn 
+% Row Count 12 (+ 1)
+% Row 10
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{7. 0-0 g6} \tn 
+% Row Count 13 (+ 1)
+% Row 11
+\SetRowColor{white}
+ & White castles king-side \tn 
+% Row Count 14 (+ 1)
+% Row 12
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{8. d4 cxd4} \tn 
+% Row Count 15 (+ 1)
+% Row 13
+\SetRowColor{white}
+ & White d4 pawn taken by c-file black pawn \tn 
+% Row Count 17 (+ 2)
+% Row 14
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{9. Nxd4 Bg7} \tn 
+% Row Count 18 (+ 1)
+% Row 15
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{10. Nde2 Qe6} \tn 
+% Row Count 19 (+ 1)
+% Row 16
+\SetRowColor{LightBackground}
+ & White knight on d-file to e2 \tn 
+% Row Count 20 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{Moves are first ten from Kasparov vs the World, \href{http://bit.ly/1fOcfIY}{http://bit.ly/1fOcfIY}}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{4em}
+
+\begin{tabularx}{5.377cm}{p{0.4977 cm} x{4.4793 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Annotations}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+!! & Extremely strong move, often game-winning \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+! & Great move \tn 
+% Row Count 3 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+!? & Speculative move, possibly strong but more analysis needed \tn 
+% Row Count 5 (+ 2)
+% Row 3
+\SetRowColor{white}
+?! & Dubious move, possibly weak but more analysis needed \tn 
+% Row Count 7 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+? & Bad move \tn 
+% Row Count 8 (+ 1)
+% Row 5
+\SetRowColor{white}
+?? & Blunder, equivalent to hanging a piece \tn 
+% Row Count 10 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
++- & White is winning \tn 
+% Row Count 11 (+ 1)
+% Row 7
+\SetRowColor{white}
++/- & White has a significant edge \tn 
+% Row Count 12 (+ 1)
+% Row 8
+\SetRowColor{LightBackground}
++/= & White has a small edge \tn 
+% Row Count 13 (+ 1)
+% Row 9
+\SetRowColor{white}
+= & Equality \tn 
+% Row Count 14 (+ 1)
+% Row 10
+\SetRowColor{LightBackground}
+∞ & Unclear advantage \tn 
+% Row Count 15 (+ 1)
+% Row 11
+\SetRowColor{white}
+=/+ & Black has a small edge \tn 
+% Row Count 16 (+ 1)
+% Row 12
+\SetRowColor{LightBackground}
+-/+ & Black has a significant edge \tn 
+% Row Count 17 (+ 1)
+% Row 13
+\SetRowColor{white}
+-+ & Black is winning \tn 
+% Row Count 18 (+ 1)
+% Row 14
+\SetRowColor{LightBackground}
+□ & Only move available \tn 
+% Row Count 19 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{From the excellent guide at \href{http://bit.ly/1iSkXch}{http://bit.ly/1iSkXch}}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{4em}
+
+
+\setlength{\parindent}{-4em}
+\begin{tabularx}{5.377cm}
+\raggedleft
+\setchessboard{
+smallboard,
+color=black,
+clearboard}
+\scalebox{1.22}{
+\chessboard[
+showmover=false,
+pgfstyle=color,
+pgfstyle=
+{[base,at={\pgfpoint{0pt}{-0.4ex}}]text},
+text= \fontsize{1.2ex}{1.2ex}\bfseries
+\sffamily\currentwq,
+markboard,
+border=false,linewidth=0.4pt,padding=0.4pt,pgfborder,linewidth=1pt,padding=2pt,pgfborder,boardfontfamily=times,boardfontseries=b,
+color=LightBackground,
+pgfstyle=color,
+padding=-0.01em,
+trimtocolor=black,
+backboard,]}
+\end{tabularx}
+
+
+% That's all folks
+
+\end{multicols*}
+
+\end{document}
