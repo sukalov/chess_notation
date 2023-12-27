@@ -1,11 +1,13 @@
 \documentclass[5pt,a4paper]{article}
 \usepackage[left=36mm, top=20mm, right=40mm, bottom=20mm, nohead, nofoot]{geometry}
 \usepackage[LSF,T1]{fontenc}
+\usepackage[russian]{babel}
 % Packages
+\usepackage{fontenc}
+\usepackage{fontawesome}
 \usepackage{chessboard,xskak}   % For chess board
 \usepackage{multicol}           % Allows multicols in tables
 \usepackage{tikz,everypage}
-\usetikzlibrary{backgrounds}
 
 \newcommand*{\AbsolutePosition}[3]{%
     % #1 = x (from south west corner of page
@@ -36,7 +38,6 @@
 \usepackage[T1]{fontenc}        % Without this we get weird character replacements
 \usepackage{colortbl}           % For coloured tables
 \usepackage{setspace}           % For line height
-\usepackage{lastpage}           % Needed for total page number
 \usepackage{seqsplit}           % Splits long words.
 %\usepackage{opensans}          % Can't make this work so far. Shame. Would be lovely.
 \usepackage[normalem]{ulem}     % For underlining links
@@ -63,8 +64,8 @@
 \setlength{\tabcolsep}{0.2cm} % Space between columns
 \setlength{\headsep}{-12pt} % Reduce space between header and content
 \setlength{\headheight}{85pt} % If less, LaTeX automatically increases it
-\renewcommand{\footrulewidth}{0pt} % Remove footer line
-\renewcommand{\headrulewidth}{0pt} % Remove header line
+% \renewcommand{\footrulewidth}{0pt} % Remove footer line
+% \renewcommand{\headrulewidth}{0pt} % Remove header line
 \renewcommand{\seqinsert}{\ifmmode\allowbreak\else\-\fi} % Hyphens in seqsplit
 % This two commands together give roughly
 % the right line height in the tables
@@ -88,16 +89,15 @@
 
 % Header and Footer
 \thispagestyle{empty}
-\pagestyle{fancy}
+% \pagestyle{fancy}
 
 
 \begin{document}
 \raggedcolumns
-\AbsolutePosition{13.5cm}{3.5cm}{\textblock{vk.com/ziferchess}}
 \centering
 \huge
-\textbf{\textcolor{DarkBackground}{\ ALGEBRAIC \ CHESS\ NOTATION\ }}
-\par\addvspace{2.5em}
+\textbf{\textcolor{DarkBackground}{\ ЗАПИСЬ\ ШАХМАТНОЙ\ ПАРТИИ\ }}
+\par\addvspace{2em}
 
 % Set font size to small. Switch to any value
 % from this page to resize cheat sheet text:
@@ -108,26 +108,26 @@
 
 \begin{tabularx}{5.377cm}{X}
 \SetRowColor{DarkBackground}
-\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Squares}}  \tn
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Названия полей}}  \tn
 % Row 0
 \SetRowColor{LightBackground}
-\mymulticolumn{1}{x{5.377cm}}{Board is always oriented with a white square at the bottom right.} \tn 
+\mymulticolumn{1}{x{5.377cm}}{Доска всегда повернута таким образом, что правая нижняя клетка для любого игрока белого цвета} \tn 
 % Row Count 2 (+ 2)
 % Row 1
 \SetRowColor{white}
-\mymulticolumn{1}{x{5.377cm}}{Squares are named from white's perspective} \tn 
+\mymulticolumn{1}{x{5.377cm}}{Названия полей считаются с точки зрения белых} \tn 
 % Row Count 3 (+ 1)
 % Row 2
 \SetRowColor{LightBackground}
-\mymulticolumn{1}{x{5.377cm}}{Vertical columns are files, named a-h (always lower case) from left to right} \tn 
+\mymulticolumn{1}{x{5.377cm}}{Вертикали называются буквами от \textbf{а} до \textbf{h} (буквы всегда строчные) слева направо} \tn 
 % Row Count 5 (+ 2)
 % Row 3
 \SetRowColor{white}
-\mymulticolumn{1}{x{5.377cm}}{Horizontal rows are ranks, named 1-8 from near to far} \tn 
+\mymulticolumn{1}{x{5.377cm}}{Горизонтали называются цифрами от \textbf{1} до \textbf{8} снизу вверх} \tn 
 % Row Count 7 (+ 2)
 % Row 4
 \SetRowColor{LightBackground}
-\mymulticolumn{1}{x{5.377cm}}{White king begins on square e1} \tn 
+\mymulticolumn{1}{x{5.377cm}}{Белый король всегда начинает с поля \textbf{е1}} \tn 
 % Row Count 8 (+ 1)
 \hhline{>{\arrayrulecolor{DarkBackground}}-}
 \end{tabularx}
@@ -135,76 +135,76 @@
 
 \begin{tabularx}{5.377cm}{x{1.3731 cm} x{1.69349 cm} x{1.51041 cm} }
 \SetRowColor{DarkBackground}
-\mymulticolumn{3}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Pieces}}  \tn
+\mymulticolumn{3}{x{5.377cm}}{\bf\textcolor{white}{Обозначения фигур}}  \tn
 % Row 0
 \SetRowColor{LightBackground}
-{\bf{Piece}} & {\bf{Code}} & {\bf{Symbol}} \tn 
+{\bf{Фигура}} & {\bf{Символ (англ.)}} & {\bf{Символ (рус.)}} \tn 
 % Row Count 1 (+ 1)
 % Row 1
 \SetRowColor{white}
-King & K & ♔ \tn 
+Король & K & Кр \tn 
 % Row Count 2 (+ 1)
 % Row 2
 \SetRowColor{LightBackground}
-Queen & Q & ♕ \tn 
+Ферзь & Q & Ф \tn 
 % Row Count 3 (+ 1)
 % Row 3
 \SetRowColor{white}
-Rook & R & ♖ \tn 
+Ладья & R & Л \tn 
 % Row Count 4 (+ 1)
 % Row 4
 \SetRowColor{LightBackground}
-Knight & N * & ♘ \tn 
+Конь & N * & К \tn 
 % Row Count 5 (+ 1)
 % Row 5
 \SetRowColor{white}
-Bishop & B & ♗ \tn 
+Слон & B & С \tn 
 % Row Count 6 (+ 1)
 % Row 6
 \SetRowColor{LightBackground}
-Pawn & {[}no letter{]} & ♙ \tn 
+Пешка & {[}без буквы{]} & \tn 
 % Row Count 7 (+ 1)
 \hhline{>{\arrayrulecolor{DarkBackground}}---}
 \SetRowColor{LightBackground}
-\mymulticolumn{3}{x{5.377cm}}{Pieces are always uppercase. \newline * In chess problems, "S" is used to represent the Knight.}  \tn 
+\mymulticolumn{3}{x{5.377cm}}{Буквы, обозначающие фигуры, всегда пишутся заглавными}  \tn 
 \hhline{>{\arrayrulecolor{DarkBackground}}---}
 \end{tabularx}
 \par\addvspace{4em}
 
 \begin{tabularx}{5.377cm}{p{0.4577 cm} x{1.00694 cm} x{3.11236 cm} }
 \SetRowColor{DarkBackground}
-\mymulticolumn{3}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Moves}}  \tn
+\mymulticolumn{3}{x{5.377cm}}{\bf\textcolor{white}{Обозначения ходов}}  \tn
 % Row 0
 \SetRowColor{LightBackground}
-\mymulticolumn{3}{x{5.377cm}}{The notation for a move indicates which piece is moved, and to where:} \tn 
+\mymulticolumn{3}{x{5.377cm}}{Обозначение хода показывает \textbf{кто} и \textbf{куда} пошёл:} \tn 
 % Row Count 2 (+ 2)
 % Row 1
 \SetRowColor{white}
- & {\bf{Qa3}} & Queen moves to a3 \tn 
+ & {\bf{Qa3}} & Ферзь пошёл на а3 \tn 
 % Row Count 3 (+ 1)
 % Row 2
 \SetRowColor{LightBackground}
- & {\bf{Kh6}} & King moves to h6 \tn 
+ & {\bf{Kh6}} & Король пошёл на h6 \tn 
 % Row Count 4 (+ 1)
 % Row 3
 \SetRowColor{white}
- & {\bf{b4}} & Pawn moves to b4 \tn 
+ & {\bf{b4}} & Пешка пошла на b4 \tn 
 % Row Count 5 (+ 1)
 % Row 4
 \SetRowColor{LightBackground}
-\mymulticolumn{3}{x{5.377cm}}{Where two identical pieces could move to the same square, the piece name is followed by its original file (or rank where the file is the same), like so:} \tn 
+\mymulticolumn{3}{x{5.377cm}}{В некоторых случаях, когда непонятно, какая из двух фигур делает ход, уточняется, с какой вертикали фигура уходит (или горизонтали), как например:} \tn 
 % Row Count 9 (+ 4)
 % Row 5
 \SetRowColor{white}
- & {\bf{Rba3}} & Rook on b file moves to a3 \tn 
+ & {\bf{Rba3}} & Ладья с вертикали b идёт на а3 \tn 
 % Row Count 10 (+ 1)
 % Row 6
 \SetRowColor{LightBackground}
- & {\bf{N4f2}} & Knight on rank 4 moves to f2 \tn 
+ & {\bf{N4f2}} & Конь с четвёртого ряда идёт на f2 \tn 
 % Row Count 12 (+ 2)
 % Row 7
 \SetRowColor{white}
- & {\bf{cxd5}} & Pawn on c file takes d5 \tn 
+ & {\bf{cxd5}} & Пешка с вертикали c бьёт на d5 \tn 
 % Row Count 13 (+ 1)
 \hhline{>{\arrayrulecolor{DarkBackground}}---}
 \end{tabularx}
@@ -212,68 +212,68 @@ Pawn & {[}no letter{]} & ♙ \tn
 
 \begin{tabularx}{5.377cm}{p{0.94563 cm} x{4.03137 cm} }
 \SetRowColor{DarkBackground}
-\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Symbols}}  \tn
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Дополнительные обозначения}}  \tn
 % Row 0
 \SetRowColor{LightBackground}
-x & Piece taken \tn 
+x & Взятие фигуры \tn 
 % Row Count 1 (+ 1)
 % Row 1
 \SetRowColor{white}
-e.p. & Piece taken en passant \tn 
+e.p. & Взятие на проходе \tn 
 % Row Count 2 (+ 1)
 % Row 2
 \SetRowColor{LightBackground}
-+ & Check \tn 
++ & Шах \tn 
 % Row Count 3 (+ 1)
 % Row 3
 \SetRowColor{white}
-\# & Checkmate \tn 
+\# & Мат \tn 
 % Row Count 4 (+ 1)
 % Row 4
 \SetRowColor{LightBackground}
-= & Pawn promotion * \tn 
+= & Проведение пешки в фигуру * \tn 
 % Row Count 5 (+ 1)
 % Row 5
 \SetRowColor{white}
-0-0 & Castle King-side \tn 
+0-0 & Рокировка в королевскую сторону \tn 
 % Row Count 6 (+ 1)
 % Row 6
 \SetRowColor{LightBackground}
-0-0-0 & Castle Queen-side \tn 
+0-0-0 & Рокировка в сторону ферзя \tn 
 % Row Count 7 (+ 1)
 % Row 7
 \SetRowColor{white}
-1-0 & White win \tn 
+1-0 & Победа белых \tn 
 % Row Count 8 (+ 1)
 % Row 8
 \SetRowColor{LightBackground}
-$\frac{1}{2}$-$\frac{1}{2}$ & Draw \tn 
+$\frac{1}{2}$-$\frac{1}{2}$ & Ничья \tn 
 % Row Count 9 (+ 1)
 % Row 9
 \SetRowColor{white}
-0-1 & Black win \tn 
+0-1 & Победа чёрных \tn 
 % Row Count 10 (+ 1)
 % Row 10
 \SetRowColor{LightBackground}
-(=) & Draw offered \tn 
+(=) & Предложение ничьи \tn 
 % Row Count 11 (+ 1)
 \hhline{>{\arrayrulecolor{DarkBackground}}--}
 \SetRowColor{LightBackground}
-\mymulticolumn{2}{x{5.377cm}}{* e8=Q means e-file pawn promoted to Queen. The equals is often omitted.}  \tn 
+\mymulticolumn{2}{x{5.377cm}}{* e8=Q означает, что пешка на вертикали е превращается в ферзя}  \tn 
 \hhline{>{\arrayrulecolor{DarkBackground}}--}
 \end{tabularx}
-\par\addvspace{4em}
+\par\addvspace{2em}
 
 \begin{tabularx}{5.377cm}{p{0.4977 cm} x{4.4793 cm} }
 \SetRowColor{DarkBackground}
-\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Example}}  \tn
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Пример записи партии}}  \tn
 % Row 0
 \SetRowColor{LightBackground}
 \mymulticolumn{2}{x{5.377cm}}{1. e4 c5} \tn 
 % Row Count 1 (+ 1)
 % Row 1
 \SetRowColor{white}
- & White pawn to e4; Black pawn to c5 \tn 
+ & Белая пешка идёт на е4, чёрная пешка на с5 \tn 
 % Row Count 2 (+ 1)
 % Row 2
 \SetRowColor{LightBackground}
@@ -281,7 +281,7 @@ $\frac{1}{2}$-$\frac{1}{2}$ & Draw \tn
 % Row Count 3 (+ 1)
 % Row 3
 \SetRowColor{white}
- & White knight to f3 \tn 
+ & Конь белых на f3 \tn 
 % Row Count 4 (+ 1)
 % Row 4
 \SetRowColor{LightBackground}
@@ -289,7 +289,7 @@ $\frac{1}{2}$-$\frac{1}{2}$ & Draw \tn
 % Row Count 5 (+ 1)
 % Row 5
 \SetRowColor{white}
- & White bishop to b5, Black in check \tn 
+ & Слон белых идёт на b5 и объявляет шах \tn 
 % Row Count 6 (+ 1)
 % Row 6
 \SetRowColor{LightBackground}
@@ -297,7 +297,7 @@ $\frac{1}{2}$-$\frac{1}{2}$ & Draw \tn
 % Row Count 7 (+ 1)
 % Row 7
 \SetRowColor{white}
- & White bishop takes black bishop on d7, black in check; Queens takes d7 bishop \tn 
+ & Слон белых берёт слона чёрных на поле d7 и даёт шах. Чёрный ферзь берёт слона на поле d7 \tn 
 % Row Count 10 (+ 3)
 % Row 8
 \SetRowColor{LightBackground}
@@ -313,7 +313,7 @@ $\frac{1}{2}$-$\frac{1}{2}$ & Draw \tn
 % Row Count 13 (+ 1)
 % Row 11
 \SetRowColor{white}
- & White castles king-side \tn 
+ & Белые рокировались в короткую сторону \tn 
 % Row Count 14 (+ 1)
 % Row 12
 \SetRowColor{LightBackground}
@@ -321,7 +321,7 @@ $\frac{1}{2}$-$\frac{1}{2}$ & Draw \tn
 % Row Count 15 (+ 1)
 % Row 13
 \SetRowColor{white}
- & White d4 pawn taken by c-file black pawn \tn 
+ & Чёрная пешка с вертикали с съела белую пешку на поле d4 \tn 
 % Row Count 17 (+ 2)
 % Row 14
 \SetRowColor{LightBackground}
@@ -333,81 +333,81 @@ $\frac{1}{2}$-$\frac{1}{2}$ & Draw \tn
 % Row Count 19 (+ 1)
 % Row 16
 \SetRowColor{LightBackground}
- & White knight on d-file to e2 \tn 
+ & Белый конь с вертикали d идёт на поле е2 \tn 
 % Row Count 20 (+ 1)
 \hhline{>{\arrayrulecolor{DarkBackground}}--}
 \SetRowColor{LightBackground}
-\mymulticolumn{2}{x{5.377cm}}{Moves are first ten from Kasparov vs the World, \href{http://bit.ly/1fOcfIY}{http://bit.ly/1fOcfIY}}  \tn 
+\mymulticolumn{2}{x{5.377cm}}{Первые 10 ходов партии Каспаров против мира: \href{https://bit.ly/3FBULOK}{https://bit.ly/3FBULOK}}  \tn 
 \hhline{>{\arrayrulecolor{DarkBackground}}--}
 \end{tabularx}
 \par\addvspace{4em}
 
 \begin{tabularx}{5.377cm}{p{0.4977 cm} x{4.4793 cm} }
 \SetRowColor{DarkBackground}
-\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Algebraic Notation: Annotations}}  \tn
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Комментарии и оценки}}  \tn
 % Row 0
 \SetRowColor{LightBackground}
-!! & Extremely strong move, often game-winning \tn 
+!! & Невероятно сильный ход, чаще всего выигрывающий партию\tn 
 % Row Count 2 (+ 2)
 % Row 1
 \SetRowColor{white}
-! & Great move \tn 
+! & Великолепный ход \tn 
 % Row Count 3 (+ 1)
 % Row 2
 \SetRowColor{LightBackground}
-!? & Speculative move, possibly strong but more analysis needed \tn 
+!? & Интересный ход, возможно сильный но оценка неоднозначна \tn 
 % Row Count 5 (+ 2)
 % Row 3
 \SetRowColor{white}
-?! & Dubious move, possibly weak but more analysis needed \tn 
+?! & Сомнительный ход, возможно слабый, но оценка неоднозначна \tn 
 % Row Count 7 (+ 2)
 % Row 4
 \SetRowColor{LightBackground}
-? & Bad move \tn 
+? & Ошибка, слыбый ход \tn 
 % Row Count 8 (+ 1)
 % Row 5
 \SetRowColor{white}
-?? & Blunder, equivalent to hanging a piece \tn 
+?? & Грубая ошибка, как например зевок фигуры \tn 
 % Row Count 10 (+ 2)
 % Row 6
 \SetRowColor{LightBackground}
-+- & White is winning \tn 
++- & Белые выигрывают \tn 
 % Row Count 11 (+ 1)
 % Row 7
 \SetRowColor{white}
-+/- & White has a significant edge \tn 
++/- & У белых серьёзное преимущество \tn 
 % Row Count 12 (+ 1)
 % Row 8
 \SetRowColor{LightBackground}
-+/= & White has a small edge \tn 
++/= & У белых небольшое преимущество \tn 
 % Row Count 13 (+ 1)
 % Row 9
 \SetRowColor{white}
-= & Equality \tn 
+= & Равная позиция \tn 
 % Row Count 14 (+ 1)
 % Row 10
 \SetRowColor{LightBackground}
-∞ & Unclear advantage \tn 
+∞ & Неясная позиция \tn 
 % Row Count 15 (+ 1)
 % Row 11
 \SetRowColor{white}
-=/+ & Black has a small edge \tn 
+=/+ & У чёрных небольшой перевес \tn 
 % Row Count 16 (+ 1)
 % Row 12
 \SetRowColor{LightBackground}
--/+ & Black has a significant edge \tn 
+-/+ & У чёрных существенное преимущество \tn 
 % Row Count 17 (+ 1)
 % Row 13
 \SetRowColor{white}
--+ & Black is winning \tn 
+-+ & Чёрные выигрывают \tn 
 % Row Count 18 (+ 1)
 % Row 14
 \SetRowColor{LightBackground}
-□ & Only move available \tn 
+□ & Единственный возможной ход \tn 
 % Row Count 19 (+ 1)
 \hhline{>{\arrayrulecolor{DarkBackground}}--}
 \SetRowColor{LightBackground}
-\mymulticolumn{2}{x{5.377cm}}{From the excellent guide at \href{http://bit.ly/1iSkXch}{http://bit.ly/1iSkXch}}  \tn 
+\mymulticolumn{2}{x{5.377cm}}{Ещё больше написано на википедии: \href{https://bit.ly/3fBa0Np}{https://bit.ly/3fBa0Np}}  \tn 
 \hhline{>{\arrayrulecolor{DarkBackground}}--}
 \end{tabularx}
 \par\addvspace{4em}
@@ -436,8 +436,14 @@ padding=-0.01em,
 trimtocolor=black,
 backboard,]}
 \end{tabularx}
+\setlength{\parindent}{3.8em}
+\par\addvspace{4em}
 
-
+\begin{tabularx}{5.377cm}
+\large
+\normalsize{}{\faInstagram} \Large{moscowchessclub}\\
+московский шахматный клуб
+\end{tabularx}
 % That's all folks
 
 \end{multicols*}
